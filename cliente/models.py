@@ -42,8 +42,7 @@ class Endereco(models.Model):
 class Contatos(models.Model):
     telefone = models.CharField(max_length=12)
     email = models.EmailField(null=False, blank=False)
-
-    
+    #RELACIONAMENTO COM CLIENTE
 
 class Conta(models.Model):
     saldo = models.FloatField(null=False, blank=False)
