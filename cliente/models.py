@@ -44,6 +44,17 @@ class Contatos(models.Model):
     email = models.EmailField(null=False, blank=False)
     #RELACIONAMENTO COM CLIENTE
 
+class Favoritos(models.Model):
+    nome = models.CharField(max_length=255)
+    cpf = models.CharField(max_length=11)
+    #RELACIONAR COM CLIENTE
+
+class Transacoes(models.Model):
+    valor = models.FloatField()
+    data = models.DateField()
+    #RELACIONAR COM CLIENTE
+
+
 class Conta(models.Model):
     saldo = models.FloatField(null=False, blank=False)
     salario = models.FloatField(null=False, blank=False)
@@ -56,7 +67,16 @@ class Conta(models.Model):
 
     def __str__(self):
         return self.saldo
+    #RELACIONAR COM CLIENTE
 
+class Emprestimo(models.Model):
+    valor = models.FloatField()
+    data = models.DateField()
+    juros = models.FloatField()
+    validade = models.DateField()
+    condicao = models.BooleanField()
+
+    
 class Cartoes(models.Model):
     numero = models.CharField(max_length=16, null=False, blank=False)
     cvv = models.CharField(max_length=3, null=False, blank=False)
@@ -66,6 +86,7 @@ class Cartoes(models.Model):
         ("C","Credito"),
         ("D","Debito")
     )
+
 
 class Fatura(models.Model):
     valor = models.CharField(max_length=100)
