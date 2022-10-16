@@ -1,16 +1,16 @@
 from django.db import models
 
-
 class Cliente(models.Model):
     nome_completo = models.CharField(max_length=255, null=False, blank=False)
     data_nasc = models.DateField()
-    trabalhando = models.BooleanField()
-    GENERO_CHOICES = (
-        ("F", "Feminino"),
-        ("M", "Masculino"),
-        ("N", "Nenhuma das opções")
-    )
-    
+    empregado = models.BooleanField()
+    # GENERO_CHOICES = (
+    #     ("F", "Feminino"),
+    #     ("M", "Masculino"),
+    #     ("N", "Nenhuma das opções")
+    # )
+    # genero = models.CharField(max_length=1, choices=GENERO_CHOICES, blank=False, null=False)
+
     def __str__(self):
         return self.nome_completo
 
@@ -49,6 +49,7 @@ class Endereco(models.Model):
         ("C","Casa"),
         ("A","Apartamento")
     )
+    log = models.CharField(max_length=1, choices=LOG_CHOICES, blank=False, null=False)
     #RELACIONA COM CLIENTE
 
 class Contatos(models.Model):
@@ -104,6 +105,7 @@ class Conta(models.Model):
         ("P","Poupança"),
         ("S","Salário")
     )
+    tipo = models.CharField(max_length=1, choices=TIPO_CHOICES, blank=False, null=False)
 
     def __str__(self):
         return self.saldo
@@ -122,6 +124,8 @@ class Emprestimo(models.Model):
         related_name='emprestimo', 
         blank=False, null=False
         )
+    def __str__(self):
+        return self.valor
 
 
 class Cartoes(models.Model):
@@ -133,6 +137,7 @@ class Cartoes(models.Model):
         ("C","Credito"),
         ("D","Debito")
     )
+    tipo_cartao = models.CharField(max_length=1, choices=TIPO_CARTAO_CHOICES, blank=False, null=False)
     
     id_conta = models.ForeignKey(
         Conta, 
@@ -140,6 +145,8 @@ class Cartoes(models.Model):
         related_name='cartoes', 
         blank=False, null=False
         )
+    def __str__(self):
+        return self.numero
 
 
 class Fatura(models.Model):
@@ -153,3 +160,5 @@ class Fatura(models.Model):
         related_name='fatura', 
         blank=False, null=False
         )
+    def __str__(self):
+        return self.valor

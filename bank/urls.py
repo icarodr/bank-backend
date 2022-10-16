@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-from cliente import *
-from django.conf import settings
-from django.conf.urls.static import static
+from client.api import viewsets as clientviewsets
+from rest_framework import routers
+
+
+route = routers.DefaultRouter()
+route.register(r'client/', clientviewsets.ClienteViewset, basename='Client')
+route.register(r'client/', clientviewsets.UsuarioViewset, basename='Usuario')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('cliente.urls')),
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', include(route.urls)),
+]
