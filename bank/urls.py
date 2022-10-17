@@ -6,7 +6,6 @@ from rest_framework import routers
 
 route = routers.DefaultRouter()
 route.register(r'client/', clientviewsets.ClienteViewset, basename='Client')
-route.register(r'client/', clientviewsets.UsuarioViewset, basename='Usuario')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

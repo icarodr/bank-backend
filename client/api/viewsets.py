@@ -5,7 +5,3 @@ from client import models
 class ClienteViewset(viewsets.ModelViewSet):
     serializer_class = serializers.ClienteSerializer
     queryset = models.Cliente.objects.all()
-
-class UsuarioViewset(viewsets.ModelViewSet):
-    serializer_class = serializers.UsuarioSerializer
-    queryset = models.Usuario.objects.all()

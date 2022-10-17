@@ -24,7 +24,7 @@ class Usuario(models.Model):
         on_delete=models.PROTECT, 
         related_name='usuarios', 
         blank=False, null=False
-        )
+    )
 
     def __str__(self):
         return self.senha
@@ -44,12 +44,12 @@ class Endereco(models.Model):
         on_delete=models.PROTECT, 
         related_name='enderecos', 
         blank=False, null=False
-        )
-    LOG_CHOICES = (
-        ("C","Casa"),
-        ("A","Apartamento")
     )
-    log = models.CharField(max_length=1, choices=LOG_CHOICES, blank=False, null=False)
+    # LOG_CHOICES = (
+    #     ("C","Casa"),
+    #     ("A","Apartamento")
+    # )
+    # log = models.CharField(max_length=1, choices=LOG_CHOICES, blank=False, null=False)
     #RELACIONA COM CLIENTE
 
 class Contatos(models.Model):
@@ -61,7 +61,7 @@ class Contatos(models.Model):
         on_delete=models.PROTECT, 
         related_name='contatos', 
         blank=False, null=False
-        )
+    )
     #RELACIONAMENTO COM CLIENTE
 
 class Favoritos(models.Model):
@@ -73,7 +73,7 @@ class Favoritos(models.Model):
         on_delete=models.PROTECT, 
         related_name='favoritos', 
         blank=False, null=False
-        )
+    )
     #RELACIONAR COM CLIENTE
 
 class Transacoes(models.Model):
@@ -85,7 +85,7 @@ class Transacoes(models.Model):
         on_delete=models.PROTECT, 
         related_name='transacoes', 
         blank=False, null=False
-        )
+    )
     #RELACIONAR COM CLIENTE
 
 
@@ -98,14 +98,15 @@ class Conta(models.Model):
         Cliente, 
         on_delete=models.PROTECT, 
         related_name='conta', 
-        blank=False, null=False)
-
-    TIPO_CHOICES = (
-        ("C","Corrente"),
-        ("P","Poupança"),
-        ("S","Salário")
+        blank=False, null=False
     )
-    tipo = models.CharField(max_length=1, choices=TIPO_CHOICES, blank=False, null=False)
+
+    # TIPO_CHOICES = (
+    #     ("C","Corrente"),
+    #     ("P","Poupança"),
+    #     ("S","Salário")
+    # )
+    # tipo = models.CharField(max_length=1, choices=TIPO_CHOICES, blank=False, null=False)
 
     def __str__(self):
         return self.saldo
@@ -123,7 +124,7 @@ class Emprestimo(models.Model):
         on_delete=models.PROTECT, 
         related_name='emprestimo', 
         blank=False, null=False
-        )
+    )
     def __str__(self):
         return self.valor
 
@@ -133,18 +134,18 @@ class Cartoes(models.Model):
     cvv = models.CharField(max_length=3, null=False, blank=False)
     data_validade = models.DateField(null=False, blank=False)
     estado = models.BooleanField(null=False, blank=False)
-    TIPO_CARTAO_CHOICES = (
-        ("C","Credito"),
-        ("D","Debito")
-    )
-    tipo_cartao = models.CharField(max_length=1, choices=TIPO_CARTAO_CHOICES, blank=False, null=False)
+    # TIPO_CARTAO_CHOICES = (
+    #     ("C","Credito"),
+    #     ("D","Debito")
+    # )
+    # tipo_cartao = models.CharField(max_length=1, choices=TIPO_CARTAO_CHOICES, blank=False, null=False)
     
     id_conta = models.ForeignKey(
         Conta, 
         on_delete=models.PROTECT, 
         related_name='cartoes', 
         blank=False, null=False
-        )
+    )
     def __str__(self):
         return self.numero
 
@@ -159,6 +160,6 @@ class Fatura(models.Model):
         on_delete=models.PROTECT, 
         related_name='fatura', 
         blank=False, null=False
-        )
+    )
     def __str__(self):
         return self.valor
