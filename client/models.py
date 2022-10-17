@@ -1,15 +1,17 @@
+from email.policy import default
 from django.db import models
 
 class Cliente(models.Model):
     nome_completo = models.CharField(max_length=255, null=False, blank=False)
     data_nasc = models.DateField()
     empregado = models.BooleanField()
-    # GENERO_CHOICES = (
-    #     ("F", "Feminino"),
-    #     ("M", "Masculino"),
-    #     ("N", "Nenhuma das opções")
-    # )
-    # genero = models.CharField(max_length=1, choices=GENERO_CHOICES, blank=False, null=False)
+    MASCULINO = "M"
+    FEMININO = "F"
+    GENEROS = [
+        (FEMININO, 'Feminino'),
+        (MASCULINO, 'Masculino')
+    ]
+    sexo = models.CharField(max_length = 1, choices = GENEROS, default=FEMININO)
 
     def __str__(self):
         return self.nome_completo
