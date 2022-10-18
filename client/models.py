@@ -1,10 +1,10 @@
-from email.policy import default
 from django.db import models
 
 class Cliente(models.Model):
     nome_completo = models.CharField(max_length=255, null=False, blank=False)
     data_nasc = models.DateField()
     empregado = models.BooleanField()
+    # - Choices
     MASCULINO = "M"
     FEMININO = "F"
     GENEROS = [
@@ -47,11 +47,6 @@ class Endereco(models.Model):
         related_name='enderecos', 
         blank=False, null=False
     )
-    # LOG_CHOICES = (
-    #     ("C","Casa"),
-    #     ("A","Apartamento")
-    # )
-    # log = models.CharField(max_length=1, choices=LOG_CHOICES, blank=False, null=False)
     #RELACIONA COM CLIENTE
 
 class Contatos(models.Model):
