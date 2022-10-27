@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'client',
     'whitenoise',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,23 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING':False,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+   'rest_framework.permissions.AllowAny',
+]
+}
+
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

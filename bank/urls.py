@@ -21,4 +21,6 @@ route.register(r'fatura', clientviewsets.FaturaViewSets, basename='Fatura')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(route.urls)),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt'))
 ]
